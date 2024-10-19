@@ -1,10 +1,4 @@
 {
   "extends": ["github>meowdao/renovate-config"],
-  "baseBranches": ["master"],
-  "packageRules": [
-    {
-      "updateTypes": ["minor", "patch"],
-      "automerge": true
-    }
-  ]
+  "baseBranches": ["master"]
 }
