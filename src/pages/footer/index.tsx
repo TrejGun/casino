@@ -1,9 +1,8 @@
 import {FC, Fragment, useState} from "react";
-import {AppBar, Fab, Link, Toolbar} from "@mui/material";
+import {AppBar, Box, Fab, Link, Toolbar} from "@mui/material";
 import {Casino} from "@mui/icons-material";
 
 import {GameDialog} from "./game-dialog";
-import useStyles from "./styles";
 
 export interface IFooterProps {
   onResults: (results: Array<string>) => void;
@@ -12,7 +11,6 @@ export interface IFooterProps {
 export const Footer: FC<IFooterProps> = props => {
   const {onResults: handleResults} = props;
 
-  const classes = useStyles();
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -25,13 +23,41 @@ export const Footer: FC<IFooterProps> = props => {
 
   return (
     <Fragment>
-      <AppBar className={classes.appbar} position="fixed">
-        <Toolbar className={classes.toolbar}>
-          <Fab color="secondary" className={classes.fab} onClick={handleOpen}>
+      <AppBar
+        sx={{
+          top: "auto",
+          bottom: 0,
+        }}
+        position="fixed"
+      >
+        <Toolbar sx={theme => ({minHeight: theme.spacing(8)})}>
+          <Fab
+            color="secondary"
+            sx={{
+              position: "absolute",
+              zIndex: 1,
+              top: -30,
+              left: 0,
+              right: 0,
+              margin: "0 auto",
+            }}
+            onClick={handleOpen}
+          >
             <Casino />
           </Fab>
-          <div className={classes.grow} />
-          <Link className={classes.title} href="https://github.com/TrejGun">
+          <Box sx={{flexGrow: 1}} />
+          <Link
+            sx={theme => ({
+              color: theme.palette.common.white,
+              textDecoration: "none",
+              fontWeight: 500,
+              fontSize: 24,
+              "&:hover": {
+                textDecoration: "none",
+              },
+            })}
+            href="https://github.com/TrejGun"
+          >
             &copy; TrejGun
           </Link>
         </Toolbar>

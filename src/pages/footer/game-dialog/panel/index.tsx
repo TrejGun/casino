@@ -1,8 +1,6 @@
 import {memo, ReactNode} from "react";
 import {Card, CardContent, Typography} from "@mui/material";
 
-import useStyles from "./styles";
-
 export interface IPanelProps {
   children: ReactNode;
 }
@@ -10,12 +8,18 @@ export interface IPanelProps {
 export const Panel = memo((props: IPanelProps) => {
   const {children} = props;
 
-  const classes = useStyles();
-
   return (
     <Card>
       <CardContent>
-        <Typography className={classes.text}>{children}</Typography>
+        <Typography
+          sx={{
+            width: 65,
+            fontSize: 48,
+            textAlign: "center",
+          }}
+        >
+          {children}
+        </Typography>
       </CardContent>
     </Card>
   );

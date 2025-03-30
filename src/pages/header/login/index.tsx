@@ -4,10 +4,8 @@ import {AccountCircle} from "@mui/icons-material";
 
 import {IUser, UserContext} from "../../../components/user-provider";
 import {LoginDialog} from "./login-dialog";
-import useStyles from "./styles";
 
 export const Login: FC = () => {
-  const classes = useStyles();
   const [anchor, setAnchor] = useState<Element | null>(null);
   const [open, setOpen] = useState(false);
 
@@ -44,7 +42,15 @@ export const Login: FC = () => {
   if (!user.isAuthenticated()) {
     return (
       <Fragment>
-        <Button className={classes.login} variant="outlined" size="large" onClick={handleLoginClick}>
+        <Button
+          sx={theme => ({
+            color: theme.palette.common.white,
+            borderColor: theme.palette.common.white,
+          })}
+          variant="outlined"
+          size="large"
+          onClick={handleLoginClick}
+        >
           Login
         </Button>
         <LoginDialog open={open} onClose={handleClose} onLogin={handleLogin} />

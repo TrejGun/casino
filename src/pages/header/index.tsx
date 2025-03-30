@@ -1,19 +1,29 @@
 import {FC} from "react";
-import {AppBar, Hidden, Link, Toolbar} from "@mui/material";
+import {AppBar, Box, Link, Toolbar} from "@mui/material";
 
 import {Login} from "./login";
 import {Balance} from "./balance";
-import useStyles from "./styles";
 
 export const Header: FC = () => {
-  const classes = useStyles();
   return (
-    <AppBar className={classes.appbar} position="fixed">
-      <Toolbar className={classes.toolbar}>
-        <Link className={classes.title} href="/">
-          <Hidden smDown>Casino Royal</Hidden>
+    <AppBar position="fixed">
+      <Toolbar sx={theme => ({minHeight: theme.spacing(8)})}>
+        <Link
+          sx={theme => ({
+            color: theme.palette.common.white,
+            textDecoration: "none",
+            fontWeight: 500,
+            fontSize: 36,
+            "&:hover": {
+              textDecoration: "none",
+            },
+            display: {xs: "none", sm: "block"}
+          })}
+          href="/"
+        >
+          Casino Royal
         </Link>
-        <div className={classes.grow} />
+        <Box sx={{flexGrow: 1}} />
         <Balance />
         <Login />
       </Toolbar>

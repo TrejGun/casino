@@ -1,9 +1,8 @@
 import {FC, useContext, useState} from "react";
-import {Button, Dialog, DialogActions, DialogContent, Grid, DialogProps} from "@mui/material";
+import {Box, Button, Dialog, DialogActions, DialogContent, type DialogProps, Grid} from "@mui/material";
 
 import {BalanceContext} from "../../../components/balance-provider";
 import {Panel} from "./panel";
-import useStyles from "./styles";
 
 export enum OPTIONS {
   SPADES = "♠",
@@ -22,8 +21,6 @@ export interface IGameDialogProps extends DialogProps {
 
 export const GameDialog: FC<IGameDialogProps> = props => {
   const {onClose, onResults, ...rest} = props;
-
-  const classes = useStyles();
 
   const [isActive, setIsActive] = useState(false);
   const [results, setResults] = useState([PLACEHOLDER, PLACEHOLDER, PLACEHOLDER]);
@@ -87,7 +84,7 @@ export const GameDialog: FC<IGameDialogProps> = props => {
       <DialogContent>
         <Grid container spacing={2}>
           {results.map((result, i) => (
-            <Grid item xs={4} key={i}>
+            <Grid size={{xs: 4}} key={i}>
               <Panel>{result}</Panel>
             </Grid>
           ))}
@@ -97,7 +94,7 @@ export const GameDialog: FC<IGameDialogProps> = props => {
         <Button onClick={handleDebug} variant="text">
           @
         </Button>
-        <div className={classes.grow} />
+        <Box sx={{flexGrow: 1}} />
         <Button onClick={handleClose} color="secondary">
           Close
         </Button>

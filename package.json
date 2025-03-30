@@ -12,8 +12,6 @@
     "@emotion/styled": "11.14.0",
     "@mui/icons-material": "7.0.1",
     "@mui/material": "7.0.1",
-    "@mui/styles": "6.4.8",
-    "clsx": "2.1.1",
     "date-fns": "4.1.0",
     "react": "19.1.0",
     "react-dom": "19.1.0"
